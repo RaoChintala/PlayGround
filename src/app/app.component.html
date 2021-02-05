@@ -1,0 +1,58 @@
+
+<form *ngIf="formReady" [formGroup]="dynamicForm" (ngSubmit)="onSubmit()" novalidate class="form">
+
+    <div class="">Resource type : {{pageData.resourceType}}</div><br>
+    <div class="">Date : {{pageData.date}}</div><br>
+    <div class="">Status : {{pageData.status}}</div><br>
+
+    <ng-container *ngFor="let controls of pageData.fields">
+  
+        <!-- Creates Checkbox and its' Question  -->
+        <div *ngIf="controls.inputType=='checkbox'">
+            <label for="controls.id">{{controls.label.slice(5)}}</label>
+            <input type="checkbox" id="controls.id" name="controls.id" [formControlName]="controls.label">
+        </div>
+
+            <!-- Creates Text Area and its' Question  -->
+        <div *ngIf="controls.inputType=='text'" class="textarea">
+            <label for="controls.id">{{controls.label.slice(5)}}</label>
+        </div>
+
+        <!-- Creates DropDown and its' Question  -->
+        <div *ngIf="controls.inputType == 'dropdown'">
+            <label for="controls.id">{{controls.label.slice(5)}}</label><br>
+            <select class="dropdown" [formControlName]="controls.label">
+                <option *ngFor="let opt of controls.options" [value]="opt.value">{{opt.key}}</option>
+            </select>
+        </div>
+
+        <!-- Creates Calendar and its' Question  -->
+        <div *ngIf="controls.inputType == 'calendar'">
+            <label for="controls.id">{{controls.label.slice(5)}}</label><br>
+            <input class="calendar" type="date" id="controls.id" name="controls.id" [formControlName]="controls.label">
+        </div>
+        <!-- Validations  -->
+        <ng-container *ngFor="let validation of controls.validations">
+            <span *ngIf="dynamicForm.controls[controls.label].touched && dynamicForm.controls[controls.label].errors">
+                <p *ngIf="dynamicForm.controls[controls.label].errors[validation.name]">
+                    {{validation.message}}
+                </p>
+            </span>
+        </ng-container>
+        <br>
+
+    </ng-container>
+    <br>
+    
+    <input  class="submit" type="submit" [disabled]="!dynamicForm.valid" />
+
+    <div *ngIf="displaySubmitdata"class="padding-10" >
+        <div>Resource type : <span class="values">{{pageData.resourceType}}</span></div><br>
+        <div>Date : <span class="values">{{pageData.date}}</span></div><br>
+        <div>Status : <span class="values">{{pageData.status}}</span></div><br>
+        <div *ngFor="let item of submitData | keyvalue" class="padding-10">
+            <span>{{item.key.slice(5)}}</span> : <span class="values">{{item.value}}</span>
+        </div>
+    </div>
+
+</form>

@@ -1,0 +1,141 @@
+{
+  "resourceType": "Questionnaire",
+  "id": "f201",
+  "url": "http://hl7.org/fhir/Questionnaire/f201",
+  "status": "active",
+  "subjectType": [
+    "Patient"
+  ],
+  "date": "2010",
+  "fields": [
+    {
+      "id": "allergies",
+      "label": "_101_Do you have allergies?",
+      "inputType": "checkbox",
+      "validations": [
+      ]
+    },
+    {
+      "id": "General Questions",
+      "label": "_102_General Questions",
+      "inputType": "text",
+      "validations": [
+      ]
+    },
+     {
+      "id" : "_gender",  
+      "label": "_103_What is your Gender?",
+      "inputType": "dropdown",
+      "options": [
+        {
+          "key":"Select Values",
+          "value":""
+        },
+          {
+              "key":"male",
+              "value":"male"
+          },
+          {
+              "key":"female",
+              "value":"female"
+          }
+      ],
+      "validations": [
+        {
+          "name": "required",
+          "validator": "required",
+          "message": "Gender Required"
+        }
+      ]
+    },
+    {
+      "id" : "dob",  
+      "label": "_104_What is your Date of Birth?",
+      "inputType": "calendar",
+      "validations": [
+        {
+          "name": "required",
+          "validator": "required",
+          "message": "DOB Required"
+        }
+      ]
+    },
+    {
+      "id" : "country",  
+      "label": "_105_What is your Country of Birth?",
+      "inputType": "dropdown",
+      "options": [
+        {
+          "key":"Select Values",
+          "value":""
+        },
+          {
+              "key":"US",
+              "value":"US"
+          },
+          {
+              "key":"CANADA",
+              "value":"CANADA"
+          },
+          {
+              "key":"UK",
+              "value":"UK"
+          }
+      ],
+      "validations": [
+        {
+          "name": "required",
+          "validator": "required",
+          "message": "Country Required"
+        }
+      ]
+    },
+    {
+      "id" : "marital",  
+      "label": "_106_What is your Marital Status?",
+      "inputType": "dropdown",
+      "options": [
+        {
+          "key":"Select Values",
+          "value":""
+        },
+          {
+              "key":"Single",
+              "value":"Single"
+          },
+          {
+              "key":"Married",
+              "value":"Married"
+          }
+      ],
+      "validations": [
+        {
+          "name": "required",
+          "validator": "required",
+          "message": "Marital status Required"
+        }
+      ]
+    },
+    {
+      "id": "intoxications",
+      "label": "_107_Intoxications",
+      "inputType": "text",
+      "validations": [
+      ]
+    },
+    {
+      "id": "smoke",
+      "label": "_108_Do you Smoke?",
+      "inputType": "checkbox",
+      "validations": [
+      ]
+    },
+    {
+      "id": "alcohol",
+      "label": "_109_Do you drink alcohol?",
+      "inputType": "checkbox",
+      "validations": [
+      ]
+    }
+  ]
+}
